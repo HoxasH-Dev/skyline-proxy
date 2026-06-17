@@ -1,0 +1,23 @@
+{
+  // ───────────────────────────────────────────────────────────────────────────
+  //  Nova Proxy — Cloudflare Worker config (Deploy-to-Cloudflare ready)
+  //  Cloudflare reads this, auto-creates the D1 database, binds it, and deploys
+  //  the Worker — no terminal. The Worker creates its own D1 tables on first run.
+  //  After deploy, open the Worker URL → the /install wizard sets the admin password.
+  // ───────────────────────────────────────────────────────────────────────────
+  "name": "skyline-proxy",
+  "main": "worker.js",
+  "compatibility_date": "2024-09-23",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "skyline-db",
+      "database_id": "c9df7f7c-b69e-4e6c-b1c8-bf95f707c7a2"
+    }
+  ],
+  "vars": {
+    "ENABLE_CRON": "false",
+    "PAGES_URL": "https://raw.githubusercontent.com/IRNova/Nova-Proxy/main/public"
+  }
+}
